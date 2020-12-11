@@ -3,7 +3,7 @@
 void User::setId(int newId)
 {
     if (newId >=0)
-        userId = newId;
+        id = newId;
 }
 void User::setLogin(string newLogin)
 {
@@ -25,7 +25,7 @@ void User::setSurname(string newSurname)
 
 int User::getId()
 {
-    return userId;
+    return id;
 }
 string User::getLogin()
 {
