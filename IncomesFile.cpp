@@ -5,7 +5,7 @@ void IncomesFile::deleteFile()
 
 }
 
-void IncomesFile::changeFilename();
+void IncomesFile::changeFilename()
 {
 
 }

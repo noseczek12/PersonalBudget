@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Income.h"
 //#include "UzytkownikMenedzer.h"
 //#include "AdresatMenedzer.h"
 //#include "MetodyPomocnicze.h"

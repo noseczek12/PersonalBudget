@@ -5,7 +5,7 @@ void ExpensesFile::deleteFile()
 
 }
 
-void ExpensesFile::changeFilename();
+void ExpensesFile::changeFilename()
 {
 
 }
