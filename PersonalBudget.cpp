@@ -30,7 +30,7 @@ void PersonalBudget::addExpense()
 
 }
 
-void PersonalBudget::currrentMonthBalance()
+void PersonalBudget::currentMonthBalance()
 {
 
 }
@@ -47,7 +47,7 @@ void PersonalBudget::changePasswordOfLoggedInUser()
 
 char PersonalBudget::chooseOptionFromMainMenu()
 {
-    char wybor;
+    char choice;
 
     system("cls");
     cout << "    >>> MAIN MENU <<<" << endl;
@@ -57,13 +57,14 @@ char PersonalBudget::chooseOptionFromMainMenu()
     cout << "9. Exit program" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
-    //wybor = metodyPomocnicze.wczytajZnak();
-    return wybor;
+    choice = auxiliaryMethods.loadCharacter();
+
+    return choice;
 }
 
 char PersonalBudget::chooseOptionFromUserMenu()
 {
-    char wybor;
+    char choice;
 
     system("cls");
     cout << " >>> USER MENU <<<" << endl;
@@ -77,7 +78,7 @@ char PersonalBudget::chooseOptionFromUserMenu()
     cout << "6. Log out" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
-    //wybor = metodyPomocnicze.wczytajZnak();
+    choice = auxiliaryMethods.loadCharacter();
 
-    return wybor;
+    return choice;
 }

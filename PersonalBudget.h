@@ -2,16 +2,16 @@
 #define PERSONALBUDGET_H
 
 #include <iostream>
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "UserManager.h"
+#include "BudgetManager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
 class PersonalBudget {
-    //MetodyPomocnicze metodyPomocnicze;
-    //UzytkownikMenedzer uzytkownikMenedzer;
-    //AdresatMenedzer *adresatMenedzer;
+    AuxiliaryMethods auxiliaryMethods;
+    UserManager userManager;
+    BudgetManager budgetManager;
     const string FILENAME_WITH_INCOMES;
     const string FILENAME_WITH_EXPENSES;
 public:
@@ -34,7 +34,7 @@ public:
     bool isuserLoggedIn();
     void addIncome();
     void addExpense();
-    void currrentMonthBalance();
+    void currentMonthBalance();
     void chosenPeriodBalance();
     void changePasswordOfLoggedInUser();
     char chooseOptionFromMainMenu();
