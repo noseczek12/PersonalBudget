@@ -3,19 +3,23 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <cstdlib>
+
 #include "User.h"
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "Markup.h"
+#include "AuxiliaryMethods.h"
+#include "XmlFile.h"
 
 using namespace std;
 
-class UsersFile {
+class UsersFile : public XmlFile
+{
     const string FILENAME_WITH_USERS;
     User getUserData();
 public:
-    UsersFile(){};
-    void addUserToFile();
+    UsersFile(string filename) : XmlFile(filename){};
+    void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void saveAllUsersToFile();
 };

@@ -2,7 +2,7 @@
 
 void PersonalBudget::userRegistration()
 {
-
+    userManager.userRegistration();
 }
 
 void PersonalBudget::userLogging()
