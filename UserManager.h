@@ -22,7 +22,10 @@ class UserManager {
     User enterNewUserData();
     int getIdOfNewUser();
 public:
-    UserManager(string filenameWithUsers) : usersFile(filenameWithUsers){};
+    UserManager(string filenameWithUsers) : usersFile(filenameWithUsers){
+        idOfLoggedinUser=0;
+        users = usersFile.loadUsersFromFile();
+    };
     void userRegistration();
     int userLogging();
     void changePasswordOfLoggedInUser();

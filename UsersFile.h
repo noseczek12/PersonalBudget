@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 #include <cstdlib>
+#include <windows.h>
 
 #include "User.h"
 #include "Markup.h"
