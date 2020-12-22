@@ -27,7 +27,7 @@ public:
         adresatMenedzer = NULL;
     }
     */
-    PersonalBudget(){};
+    PersonalBudget(string filenameWithUsers) : userManager(filenameWithUsers){};
     void userRegistration();
     void userLogging();
     void userLogout();

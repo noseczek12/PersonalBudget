@@ -3,29 +3,36 @@
 
 #include <iostream>
 #include <vector>
+#include <windows.h>
+#include <fstream>
+#include <sstream>
+
 #include "User.h"
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "UsersFile.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
 class UserManager {
     int idOfLoggedinUser;
     vector <User> users;
-    //UsersFile usersFile
-    //AuxiliaryMethods auxiliaryMethods;
-    bool doesLoginExist();
+    UsersFile usersFile;
+    AuxiliaryMethods auxiliaryMethods;
+    bool doesLoginExist(string login);
     User enterNewUserData();
     int getIdOfNewUser();
 public:
-    UserManager(){};
+    UserManager(string filenameWithUsers) : usersFile(filenameWithUsers){
+        idOfLoggedinUser=0;
+        users = usersFile.loadUsersFromFile();
+    };
     void userRegistration();
     int userLogging();
     void changePasswordOfLoggedInUser();
     int getIdOfLoggedInUser();
-    int setIdOfLoggedInUser();
+    void setIdOfLoggedInUser(int newId);
     bool isUserLoggedIn();
+    void userLogout();
 };
 
 

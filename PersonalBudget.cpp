@@ -2,22 +2,22 @@
 
 void PersonalBudget::userRegistration()
 {
-
+    userManager.userRegistration();
 }
 
 void PersonalBudget::userLogging()
 {
-
+    userManager.userLogging();
 }
 
 void PersonalBudget::userLogout()
 {
-
+    userManager.userLogout();
 }
 
 bool PersonalBudget::isuserLoggedIn()
 {
-
+    userManager.isUserLoggedIn();
 }
 
 void PersonalBudget::addIncome()

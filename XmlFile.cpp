@@ -5,7 +5,7 @@ string XmlFile::getFileName()
     return FILENAME;
 }
 
-bool XmlFile::isFileEmpty()
+/*bool XmlFile::isFileEmpty()
 {
     bool emptyFile = true;
     fstream xmlFile;
@@ -20,3 +20,4 @@ bool XmlFile::isFileEmpty()
     xmlFile.close();
     return emptyFile;
 }
+*/
