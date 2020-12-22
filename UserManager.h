@@ -30,8 +30,9 @@ public:
     int userLogging();
     void changePasswordOfLoggedInUser();
     int getIdOfLoggedInUser();
-    int setIdOfLoggedInUser();
+    void setIdOfLoggedInUser(int newId);
     bool isUserLoggedIn();
+    void userLogout();
 };
 
 

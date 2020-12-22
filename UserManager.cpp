@@ -62,7 +62,39 @@ void UserManager::userRegistration()
 
 int UserManager::userLogging()
 {
+    User user;
+    string login = "", password = "";
 
+    cout << endl << "Enter login: ";
+    login = auxiliaryMethods.loadLine();
+
+    vector <User>::iterator itr = users.begin();
+    while (itr != users.end())
+    {
+        if (itr -> getLogin() == login)
+        {
+            for (int retryCount = 3; retryCount > 0; retryCount--)
+            {
+                cout << "Enter password. Attempts remaining: " << retryCount << ": ";
+                password = auxiliaryMethods.loadLine();
+
+                if (itr -> getPassword() == password)
+                {
+                    cout << endl << "You are logged in." << endl << endl;
+                    system("pause");
+                    setIdOfLoggedInUser(itr->getId());
+                    return idOfLoggedinUser;
+                }
+            }
+            cout << "You have entered 3 times wrong password." << endl;
+            system("pause");
+            return 0;
+        }
+        itr++;
+    }
+    cout << "There is no user with entered login" << endl << endl;
+    system("pause");
+    return 0;
 }
 
 void UserManager::changePasswordOfLoggedInUser()
@@ -72,15 +104,24 @@ void UserManager::changePasswordOfLoggedInUser()
 
 int UserManager::getIdOfLoggedInUser()
 {
-
+    return idOfLoggedinUser;
 }
 
-int UserManager::setIdOfLoggedInUser()
+void UserManager::setIdOfLoggedInUser(int newId)
 {
-
+    idOfLoggedinUser=newId;
 }
 
 bool UserManager::isUserLoggedIn()
 {
-
+    if(idOfLoggedinUser > 0)
+        return true;
+    else
+        return false;
 }
+
+void UserManager::userLogout()
+{
+    idOfLoggedinUser = 0;
+}
+
