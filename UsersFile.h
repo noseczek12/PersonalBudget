@@ -6,6 +6,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <windows.h>
+#include <stdio.h>
 
 #include "User.h"
 #include "Markup.h"
@@ -22,7 +23,7 @@ public:
     UsersFile(string filename) : XmlFile(filename){};
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
-    void saveAllUsersToFile();
+    void saveAllUsersToFile(vector <User> users);
 };
 
 

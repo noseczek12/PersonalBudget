@@ -30,13 +30,12 @@ vector <User> UsersFile::loadUsersFromFile() {
     bool fileExists = xml.Load(getFileName());
     if(!fileExists) {
         cout << "Can't open file. File doesn't exist." << endl;
-    system("pause");
-    }
-    else{
+        system("pause");
+    } else {
         string singleUserData = "";
         xml.FindElem();
         xml.IntoElem();
-        while(xml.FindElem("User")){
+        while(xml.FindElem("User")) {
             xml.IntoElem();
             xml.FindElem("UserId");
             singleUserData = xml.GetData();
@@ -60,6 +59,29 @@ vector <User> UsersFile::loadUsersFromFile() {
     return users;
 }
 
-void UsersFile::saveAllUsersToFile() {
-
+void UsersFile::saveAllUsersToFile(vector <User> users) {
+    User user;
+    vector <User>::iterator itrEnd = --users.end();
+    CMarkup xml;
+    bool fileExists = xml.Load(getFileName());
+    remove("Users.xml");
+    if(!fileExists) {
+        cout << "Cannot open file " << getFileName() << endl;
+    } else {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem( "Users" );
+        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+            xml.FindElem();
+            xml.IntoElem();
+            xml.AddElem( "User" );
+            xml.IntoElem();
+            xml.AddElem( "UserId", AuxiliaryMethods::convertIntToString(itr -> getId()));
+            xml.AddElem( "Name", itr -> getName() );
+            xml.AddElem( "Surname", itr -> getSurname() );
+            xml.AddElem( "Login", itr -> getLogin() );
+            xml.AddElem( "Password", itr -> getPassword() );
+            xml.Save(getFileName());
+            xml.OutOfElem();
+        }
+    }
 }

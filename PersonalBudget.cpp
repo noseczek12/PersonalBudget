@@ -42,7 +42,7 @@ void PersonalBudget::chosenPeriodBalance()
 
 void PersonalBudget::changePasswordOfLoggedInUser()
 {
-
+    userManager.changePasswordOfLoggedInUser();
 }
 
 char PersonalBudget::chooseOptionFromMainMenu()

@@ -99,7 +99,21 @@ int UserManager::userLogging()
 
 void UserManager::changePasswordOfLoggedInUser()
 {
+    string newPassword = "";
+    cout << "Id of logged in user: " << idOfLoggedinUser << endl;
+    cout << "Enter new password: ";
+    newPassword = auxiliaryMethods.loadLine();
 
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++)
+    {
+        if (itr -> getId() == idOfLoggedinUser)
+        {
+            itr -> setPassword(newPassword);
+            cout << "Password has been changed." << endl << endl;
+            system("pause");
+        }
+    }
+    usersFile.saveAllUsersToFile(users);
 }
 
 int UserManager::getIdOfLoggedInUser()
