@@ -60,28 +60,23 @@ vector <User> UsersFile::loadUsersFromFile() {
 }
 
 void UsersFile::saveAllUsersToFile(vector <User> users) {
-    User user;
-    vector <User>::iterator itrEnd = --users.end();
-    CMarkup xml;
-    bool fileExists = xml.Load(getFileName());
+    CMarkup xmlFile;
     remove("Users.xml");
-    if(!fileExists) {
-        cout << "Cannot open file " << getFileName() << endl;
-    } else {
-        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
-        xml.AddElem( "Users" );
-        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
-            xml.FindElem();
-            xml.IntoElem();
-            xml.AddElem( "User" );
-            xml.IntoElem();
-            xml.AddElem( "UserId", AuxiliaryMethods::convertIntToString(itr -> getId()));
-            xml.AddElem( "Name", itr -> getName() );
-            xml.AddElem( "Surname", itr -> getSurname() );
-            xml.AddElem( "Login", itr -> getLogin() );
-            xml.AddElem( "Password", itr -> getPassword() );
-            xml.Save(getFileName());
-            xml.OutOfElem();
+    for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        xmlFile.Load(getFileName());
+        if(!xmlFile.FindElem("Users")) {
+            xmlFile.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+            xmlFile.AddElem("Users");
         }
+        xmlFile.IntoElem();
+        xmlFile.AddElem("User");
+        xmlFile.IntoElem();
+        xmlFile.AddElem("UserId", to_string(itr -> getId()));
+        xmlFile.AddElem("Name", itr -> getName());
+        xmlFile.AddElem("Surname", itr -> getSurname());
+        xmlFile.AddElem("Login", itr -> getLogin());
+        xmlFile.AddElem("Password", itr -> getPassword());
+        xmlFile.OutOfElem();
+        xmlFile.Save(getFileName());
     }
 }
