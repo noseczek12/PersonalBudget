@@ -20,12 +20,12 @@ Income IncomesFile::getIncomeData()
 
 }
 
-void IncomesFile::setLastUserId()
+void IncomesFile::setLastIncomeId()
 {
 
 }
 
-int IncomesFile::getLastUserId()
+int IncomesFile::getLastIncomeId()
 {
 
 }
@@ -35,7 +35,7 @@ bool IncomesFile::addIncomeToFile()
 
 }
 
-int IncomesFile::getLastUserIdFromFile()
+int IncomesFile::getLastIncomeIdFromFile()
 {
 
 }

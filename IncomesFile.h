@@ -13,7 +13,7 @@ using namespace std;
 class IncomesFile {
     const string FILENAME_WITH_INCOMES;
     string temporaryIncomesFileName;
-    int lastUserId;
+    int lastIncomeId;
     //AuxiliaryMethods auxiliaryMethods;
     void deleteFile();
     void changeFilename();
@@ -21,10 +21,10 @@ public:
     IncomesFile(){};
     vector<Income> loadIncomesOfLoggedinUserFromFile();
     Income getIncomeData();
-    void setLastUserId();
-    int getLastUserId();
+    void setLastIncomeId();
+    int getLastIncomeId();
     bool addIncomeToFile();
-    int getLastUserIdFromFile();
+    int getLastIncomeIdFromFile();
 };
 
 
