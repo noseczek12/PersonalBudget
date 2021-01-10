@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <windows.h>
 #include "Income.h"
 #include "Expense.h"
 //#include "UzytkownikMenedzer.h"
@@ -16,7 +17,7 @@ class BudgetManager {
     vector <Income> incomes;
     vector <Expense> expenses;
     //FileWithExpenses fileWithExpenses;
-    //FileWithIncomes fileWithIncomes;
+    IncomesFile incomesFile;
     Income enterNewIncomeData();
     Expense enterNewExpenseData();
     char chooseOptionFromAdditionalMenu();

@@ -17,7 +17,18 @@ char BudgetManager::chooseOptionFromAdditionalMenu()
 
 void BudgetManager::addIncome()
 {
+    Income income;
 
+    system("cls");
+    cout << " >>> ADDING NEW INCOME <<<" << endl << endl;
+    income = enterNewIncomeData();
+
+    incomes.push_back(income);
+    if(incomesFile.addIncomeToFile(income))
+        cout << "New income has been added." << endl;
+    else
+        cout << "Error! Cannot add income to file." << endl;
+    system("pause");
 }
 
 void BudgetManager::addExpense()
