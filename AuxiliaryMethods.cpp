@@ -71,9 +71,10 @@ string AuxiliaryMethods::getNumber(string text, int charPosition)
     return number;
 }
 
-string AuxiliaryMethods::changeCommaToDot()
+string AuxiliaryMethods::changeCommaToDot(string text)
 {
-
+    replace(text.begin(), text.end(), ',', '.');
+    return text;
 }
 
 bool AuxiliaryMethods::isDateValid()

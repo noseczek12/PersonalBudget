@@ -15,7 +15,7 @@ public:
     static int LoadInteger();
     static int convertStringtoInt(string number);
     static string getNumber(string text, int charPosition);
-    static string changeCommaToDot();
+    static string changeCommaToDot(string text);
     static bool isDateValid();
     static int howManydaysHasCurrentMonth();
     static int compareTwoDates();
