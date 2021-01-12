@@ -12,15 +12,19 @@ Income BudgetManager::enterNewIncomeData() {
 
     switch (choice) {
     case '1':
-        //function date = getCurrentDate();
-        //income.setDate(date);
+        int date;
+        date = auxiliaryMethods.getCurrentDate();
+        income.setDate(date);
         break;
     case '2':
-        //function date = enterDate();
-        //if(checkDateValidity == true)
-            // income.setDate(date);
-        //else
-            //cout << "Entered date is not valid." << endl;
+        string inputDate;
+        int convertedInputDate;
+        inputDate = auxiliaryMethods.loadLine();
+        convertedInputDate = auxiliaryMethods.removeDelimitersAndConvertToInt();
+        if(checkDateValidity(convertedInputDate) == true)
+            income.setDate(convertedInputDate);
+        else
+            cout << "Entered date is not valid. Please try again." << endl;
         break;
     default:
         cout << endl << "There is no such option in the menu." << endl << endl;
@@ -86,4 +90,3 @@ void BudgetManager::currentMonthBalance() {
 void BudgetManager::chosenPeriodBalance() {
 
 }
-

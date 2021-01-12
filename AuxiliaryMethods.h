@@ -19,6 +19,9 @@ public:
     static bool isDateValid();
     static int howManydaysHasCurrentMonth();
     static int compareTwoDates();
+    static int getCurrentDate();
+    static bool checkDateValidity();
+    static int removeDelimitersAndConvertToInt();
 };
 
 #endif
