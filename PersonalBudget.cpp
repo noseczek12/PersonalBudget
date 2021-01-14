@@ -22,7 +22,15 @@ bool PersonalBudget::isuserLoggedIn()
 
 void PersonalBudget::addIncome()
 {
-
+    if(userManager.isUserLoggedIn())
+    {
+        budgetManager->addIncome();
+    }
+    else
+    {
+        cout << "If you want to add income, you must be logged in !" << endl;
+        system("pause");
+    }
 }
 
 void PersonalBudget::addExpense()

@@ -10,11 +10,11 @@
 
 using namespace std;
 
-class IncomesFile {
+class IncomesFile : public XmlFile{
     const string FILENAME_WITH_INCOMES;
     string temporaryIncomesFileName;
     int lastIncomeId;
-    //AuxiliaryMethods auxiliaryMethods;
+    AuxiliaryMethods auxiliaryMethods;
     void deleteFile();
     void changeFilename();
 public:
@@ -23,7 +23,7 @@ public:
     Income getIncomeData();
     void setLastIncomeId();
     int getLastIncomeId();
-    bool addIncomeToFile();
+    void addIncomeToFile();
     int getLastIncomeIdFromFile();
 };
 

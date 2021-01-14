@@ -16,13 +16,13 @@ class Income
 public:
     void setIncomeId(int newIncomeId);
     void setUserId(int newUserId);
-    void setDate(string newDate);
+    void setDate(int newDate);
     void setItem(string newItem);
     void setAmount(string newAmount);
 
     int getIncomeId();
     int getUserId();
-    string getDate();
+    int getDate();
     string getItem();
     string getAmount();
 };

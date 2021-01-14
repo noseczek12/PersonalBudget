@@ -15,19 +15,17 @@ class PersonalBudget {
     const string FILENAME_WITH_INCOMES;
     const string FILENAME_WITH_EXPENSES;
 public:
-    /*KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
-    : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    PersonalBudget(string filenameWithUsers, string filenameWithIncomes)
+    : userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes)
     {
-        adresatMenedzer = NULL;
-        vector<Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+        BudgetManager = NULL;
+        //vector<Income> wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     };
     ~KsiazkaAdresowa()
     {
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     }
-    */
-    PersonalBudget(string filenameWithUsers) : userManager(filenameWithUsers){};
     void userRegistration();
     void userLogging();
     void userLogout();

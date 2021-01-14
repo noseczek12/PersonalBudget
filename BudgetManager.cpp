@@ -72,10 +72,8 @@ void BudgetManager::addIncome() {
     income = enterNewIncomeData();
 
     incomes.push_back(income);
-    if(incomesFile.addIncomeToFile(income))
-        cout << "New income has been added." << endl;
-    else
-        cout << "Error! Cannot add income to file." << endl;
+    incomesFile.addIncomeToFile(income);
+    cout << "New income has been added." << endl;
     system("pause");
 }
 
