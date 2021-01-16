@@ -19,7 +19,7 @@ class IncomesFile : public XmlFile{
     void changeFilename();
 public:
     IncomesFile(){};
-    vector<Income> loadIncomesOfLoggedinUserFromFile();
+    vector<Income> loadIncomesOfLoggedInUserFromFile();
     Income getIncomeData();
     void setLastIncomeId();
     int getLastIncomeId();

@@ -10,9 +10,41 @@ void IncomesFile::changeFilename()
 
 }
 
-vector<Income> IncomesFile::loadIncomesOfLoggedinUserFromFile()
+vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile()
 {
-
+    Income income;
+    vector<Income> incomes;
+    CMarkup xml;
+    bool fileExists = xml.Load(getFileName());
+    if(!fileExists) {
+        cout << "Can't open file. File doesn't exist." << endl;
+        system("pause");
+    } else {
+        string singleUserData = "";
+        xml.FindElem();
+        xml.IntoElem();
+        while(xml.FindElem("Income")) {
+            xml.IntoElem();
+            xml.FindElem("IncomeId");
+            singleUserData = xml.GetData();
+            income.setIncomeId(atoi(singleUserData.c_str()));
+            xml.FindElem("UserId");
+            singleUserData = xml.GetData();
+            income.setUserId(atoi(singleUserData.c_str()));
+            xml.FindElem("Date");
+            singleUserData = xml.GetData();
+            income.setDate(atoi(singleUserData.c_str()));
+            xml.FindElem("Item");
+            singleUserData = xml.GetData();
+            income.setItem(singleUserData);
+            xml.FindElem("Amount");
+            singleUserData = xml.GetData();
+            income.setAmount(singleUserData);
+            incomes.push_back(income);
+            xml.OutOfElem();
+        }
+    }
+    return incomes;
 }
 
 Income IncomesFile::getIncomeData()

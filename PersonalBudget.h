@@ -19,7 +19,7 @@ public:
     : userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes)
     {
         BudgetManager = NULL;
-        //vector<Income> wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+        vector<Income> loadIncomesOfLoggedInUserFromFile();
     };
     ~KsiazkaAdresowa()
     {
@@ -37,6 +37,7 @@ public:
     void changePasswordOfLoggedInUser();
     char chooseOptionFromMainMenu();
     char chooseOptionFromUserMenu();
+    vector<Income> loadIncomesOfLoggedInUserFromFile();
 };
 
 

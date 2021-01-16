@@ -22,11 +22,16 @@ class BudgetManager {
     Expense enterNewExpenseData();
     char chooseOptionFromAdditionalMenu();
 public:
-    BudgetManager(){};
+    BudgetManager(string filenameWithIncomes, int idOfLoggedInUser)
+    :  incomesFile(filenameWithIncomes), ID_OF_LOGGED_IN_USER(idOfLoggedInUser)
+    {
+        incomes = incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+    };
     void addIncome();
     void addExpense();
     void currentMonthBalance();
     void chosenPeriodBalance();
+    vector<Income> loadIncomesOfLoggedInUserFromFile();
 };
 
 

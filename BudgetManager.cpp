@@ -88,3 +88,8 @@ void BudgetManager::currentMonthBalance() {
 void BudgetManager::chosenPeriodBalance() {
 
 }
+
+vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile()
+{
+    incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+}

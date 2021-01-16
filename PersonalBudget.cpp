@@ -90,3 +90,11 @@ char PersonalBudget::chooseOptionFromUserMenu()
 
     return choice;
 }
+
+vector<Income> PersonalBudget::loadIncomesOfLoggedInUserFromFile()
+{
+    if(userManager.isUserLoggedIn())
+    {
+        budgetManager->loadIncomesOfLoggedInUserFromFile();
+    }
+}
