@@ -11,25 +11,27 @@ Income BudgetManager::enterNewIncomeData() {
     choice = chooseOptionFromAdditionalMenu();
 
     switch (choice) {
-    case '1':
-        int date;
+    case '1': {
+        string date;
         date = auxiliaryMethods.getCurrentDate();
         income.setDate(date);
         break;
-    case '2':
-        string inputDate;
-        int convertedInputDate;
+    }
+    case '2': {
+        string inputDate, removedDelimitersDate;
         inputDate = auxiliaryMethods.loadLine();
-        convertedInputDate = auxiliaryMethods.removeDelimitersAndConvertToInt();
-        if(checkDateValidity(convertedInputDate) == true)
-            income.setDate(convertedInputDate);
+        removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
+        if(auxiliaryMethods.checkDateValidity() == true)
+            income.setDate(removedDelimitersDate);
         else
             cout << "Entered date is not valid. Please try again." << endl;
         break;
-    default:
+    }
+    default: {
         cout << endl << "There is no such option in the menu." << endl << endl;
         system("pause");
         break;
+    }
     }
 
     string item;
@@ -40,7 +42,7 @@ Income BudgetManager::enterNewIncomeData() {
     string amount;
     cout << "Enter amount of income: ";
     amount = auxiliaryMethods.loadLine();
-    amount = auxiliaryMethods.changeCommaToDot();
+    amount = auxiliaryMethods.changeCommaToDot(amount);
     income.setAmount(amount);
 
     return income;
@@ -50,8 +52,7 @@ Expense BudgetManager::enterNewExpenseData() {
 
 }
 
-char BudgetManager::chooseOptionFromAdditionalMenu()
-{
+char BudgetManager::chooseOptionFromAdditionalMenu() {
     char choice;
 
     system("cls");
@@ -89,7 +90,6 @@ void BudgetManager::chosenPeriodBalance() {
 
 }
 
-vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile()
-{
-    incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile(int id) {
+    incomesFile.loadIncomesOfLoggedInUserFromFile(id);
 }

@@ -18,7 +18,7 @@ class ExpensesFile {
     void deleteFile();
     void changeFilename();
 public:
-    ExpensesFile(){};
+    ExpensesFile() {};
     vector<Expense> loadExpensesOfLoggedinUserFromFile();
     Expense getExpenseData();
     void setLastUserId();

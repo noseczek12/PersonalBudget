@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <ctime>
+#include <algorithm>
 
 using namespace std;
 
-class AuxiliaryMethods
-{
+class AuxiliaryMethods {
 public:
     static string convertIntToString(int number);
     static char loadCharacter();
@@ -19,9 +21,9 @@ public:
     static bool isDateValid();
     static int howManydaysHasCurrentMonth();
     static int compareTwoDates();
-    static int getCurrentDate();
+    static string getCurrentDate();
     static bool checkDateValidity();
-    static int removeDelimitersAndConvertToInt();
+    static string removeDelimiters(string str);
 };
 
 #endif

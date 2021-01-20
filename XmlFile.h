@@ -6,8 +6,7 @@
 
 using namespace std;
 
-class XmlFile
-{
+class XmlFile {
     const string FILENAME;
 public:
     XmlFile(string fileName) : FILENAME(fileName) {};

@@ -3,21 +3,17 @@
 
 using namespace std;
 
-int main()
-{
-    PersonalBudget personalBudget("Users.xml");
+int main() {
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml");
     vector <Income> incomes;
     vector <Expense> expenses;
     char choice;
 
-    while (true)
-    {
-        if (personalBudget.isuserLoggedIn()==0)
-        {
+    while (true) {
+        if (personalBudget.isuserLoggedIn()==0) {
             choice = personalBudget.chooseOptionFromMainMenu();
 
-            switch (choice)
-            {
+            switch (choice) {
             case '1':
                 personalBudget.userRegistration();
                 break;
@@ -32,14 +28,11 @@ int main()
                 system("pause");
                 break;
             }
-        }
-        else
-        {
+        } else {
             if (incomes.empty() == true && expenses.empty() == true)
-            choice = personalBudget.chooseOptionFromUserMenu();
+                choice = personalBudget.chooseOptionFromUserMenu();
 
-            switch (choice)
-            {
+            switch (choice) {
             case '1':
                 personalBudget.addIncome();
                 break;

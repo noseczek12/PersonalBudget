@@ -4,13 +4,12 @@
 #include <iostream>
 #include <vector>
 #include "Income.h"
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "UserManager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class IncomesFile : public XmlFile{
+class IncomesFile : public XmlFile {
     const string FILENAME_WITH_INCOMES;
     string temporaryIncomesFileName;
     int lastIncomeId;
@@ -18,12 +17,15 @@ class IncomesFile : public XmlFile{
     void deleteFile();
     void changeFilename();
 public:
-    IncomesFile(){};
-    vector<Income> loadIncomesOfLoggedInUserFromFile();
+    IncomesFile(string fileName):
+        XmlFile(fileName) {
+        lastIncomeId = 0;
+    };
+    vector<Income> loadIncomesOfLoggedInUserFromFile(int id);
     Income getIncomeData();
     void setLastIncomeId();
     int getLastIncomeId();
-    void addIncomeToFile();
+    void addIncomeToFile(Income income);
     int getLastIncomeIdFromFile();
 };
 

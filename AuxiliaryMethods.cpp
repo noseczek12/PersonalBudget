@@ -62,7 +62,7 @@ string AuxiliaryMethods::getNumber(string text, int charPosition) {
 }
 
 string AuxiliaryMethods::changeCommaToDot(string text) {
-    replace(text.begin(), text.end(), ',', '.');
+    text.replace(text.begin(), text.end(), ',', '.');
     return text;
 }
 
@@ -78,7 +78,7 @@ int AuxiliaryMethods::compareTwoDates() {
 
 }
 
-int AuxiliaryMethods::getCurrentDate() {
+string AuxiliaryMethods::getCurrentDate() {
     char s[10];
     string date = s;
     int convertedDateToInt = stoi(s);
@@ -88,7 +88,7 @@ int AuxiliaryMethods::getCurrentDate() {
     int currentMonth = now->tm_mon + 1;
     int currentYear = now->tm_year + 1900;
     sprintf(s, "%04d%02d%02d", currentYear, currentMonth, currentDay);
-    return convertedDateToInt;
+    return s;
 }
 
 bool AuxiliaryMethods::checkDateValidity()
@@ -96,10 +96,8 @@ bool AuxiliaryMethods::checkDateValidity()
 
 }
 
-int AuxiliaryMethods::removeDelimitersAndConvertToInt(string str)
+string AuxiliaryMethods::removeDelimiters(string str)
 {
-    int strToInt;
     str.erase(remove(str.begin(), str.end(), '-'), str.end());
-    strToInt = stoi(str);
-    return strToInt;
+    return str;
 }

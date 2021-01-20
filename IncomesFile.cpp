@@ -10,7 +10,7 @@ void IncomesFile::changeFilename()
 
 }
 
-vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile()
+vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int id)
 {
     Income income;
     vector<Income> incomes;
@@ -33,7 +33,7 @@ vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile()
             income.setUserId(atoi(singleUserData.c_str()));
             xml.FindElem("Date");
             singleUserData = xml.GetData();
-            income.setDate(atoi(singleUserData.c_str()));
+            income.setDate(singleUserData);
             xml.FindElem("Item");
             singleUserData = xml.GetData();
             income.setItem(singleUserData);
@@ -76,7 +76,7 @@ void IncomesFile::addIncomeToFile(Income income)
     xml.IntoElem();
     xml.AddElem( "IncomeId", AuxiliaryMethods::convertIntToString(income.getIncomeId()));
     xml.AddElem( "UserId", AuxiliaryMethods::convertIntToString(income.getUserId()));
-    xml.AddElem( "Date", AuxiliaryMethods::convertIntToString(income.getDate()));
+    xml.AddElem( "Date", income.getDate());
     xml.AddElem( "Item", income.getItem() );
     xml.AddElem( "Amount", income.getAmount() );
     xml.Save(getFileName());

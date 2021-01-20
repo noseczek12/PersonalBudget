@@ -1,41 +1,33 @@
 #include "ExpensesFile.h"
 
-void ExpensesFile::deleteFile()
-{
+void ExpensesFile::deleteFile() {
 
 }
 
-void ExpensesFile::changeFilename()
-{
+void ExpensesFile::changeFilename() {
 
 }
 
-vector<Expense> ExpensesFile::loadExpensesOfLoggedinUserFromFile()
-{
+vector<Expense> ExpensesFile::loadExpensesOfLoggedinUserFromFile() {
 
 }
 
-Expense ExpensesFile::getExpenseData()
-{
+Expense ExpensesFile::getExpenseData() {
 
 }
 
-void ExpensesFile::setLastUserId()
-{
+void ExpensesFile::setLastUserId() {
 
 }
 
-int ExpensesFile::getLastUserId()
-{
+int ExpensesFile::getLastUserId() {
 
 }
 
-bool ExpensesFile::addExpenseToFile()
-{
+bool ExpensesFile::addExpenseToFile() {
 
 }
 
-int ExpensesFile::getLastUserIdFromFile()
-{
+int ExpensesFile::getLastUserIdFromFile() {
 
 }

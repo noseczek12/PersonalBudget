@@ -22,7 +22,7 @@ class UserManager {
     User enterNewUserData();
     int getIdOfNewUser();
 public:
-    UserManager(string filenameWithUsers) : usersFile(filenameWithUsers){
+    UserManager(string filenameWithUsers) : usersFile(filenameWithUsers) {
         idOfLoggedinUser=0;
         users = usersFile.loadUsersFromFile();
     };
@@ -31,7 +31,7 @@ public:
     void changePasswordOfLoggedInUser();
     int getIdOfLoggedInUser();
     void setIdOfLoggedInUser(int newId);
-    bool isUserLoggedIn();
+    int isUserLoggedIn();
     void userLogout();
 };
 
