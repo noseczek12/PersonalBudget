@@ -22,8 +22,10 @@ public:
     static int howManydaysHasCurrentMonth();
     static int compareTwoDates();
     static string getCurrentDate();
-    static bool checkDateValidity();
+    static bool checkDateValidity(string enteredDate);
     static string removeDelimiters(string str);
+    static int getDateWithLastDayOfCurrentMonth();
+    static int getNumberOfDaysInCurrentMonth();
 };
 
 #endif

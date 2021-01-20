@@ -19,9 +19,10 @@ Income BudgetManager::enterNewIncomeData() {
     }
     case '2': {
         string inputDate, removedDelimitersDate;
+        cout << "Please input date in yyyy-mm-dd format: ";
         inputDate = auxiliaryMethods.loadLine();
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
-        if(auxiliaryMethods.checkDateValidity() == true)
+        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == true)
             income.setDate(removedDelimitersDate);
         else
             cout << "Entered date is not valid. Please try again." << endl;
@@ -33,7 +34,7 @@ Income BudgetManager::enterNewIncomeData() {
         break;
     }
     }
-
+    system("cls");
     string item;
     cout << "Enter item of income: ";
     item = auxiliaryMethods.loadLine();
@@ -56,6 +57,7 @@ char BudgetManager::chooseOptionFromAdditionalMenu() {
     char choice;
 
     system("cls");
+    cout << " >>> ADDING NEW INCOME <<<" << endl << endl;
     cout << "Choose date of income: " << endl;
     cout << "1. Current day." << endl;
     cout << "2. Another date." << endl;
@@ -67,9 +69,6 @@ char BudgetManager::chooseOptionFromAdditionalMenu() {
 
 void BudgetManager::addIncome() {
     Income income;
-
-    system("cls");
-    cout << " >>> ADDING NEW INCOME <<<" << endl << endl;
     income = enterNewIncomeData();
 
     incomes.push_back(income);
