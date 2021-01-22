@@ -3,11 +3,13 @@
 
 #include <iostream>
 #include <sstream>
+#include <string>
+#include <ctime>
+#include <algorithm>
 
 using namespace std;
 
-class AuxiliaryMethods
-{
+class AuxiliaryMethods {
 public:
     static string convertIntToString(int number);
     static char loadCharacter();
@@ -15,10 +17,15 @@ public:
     static int LoadInteger();
     static int convertStringtoInt(string number);
     static string getNumber(string text, int charPosition);
-    static string changeCommaToDot();
+    static string changeCommaToDot(string text);
     static bool isDateValid();
     static int howManydaysHasCurrentMonth();
     static int compareTwoDates();
+    static string getCurrentDate();
+    static bool checkDateValidity(string enteredDate);
+    static string removeDelimiters(string str);
+    static int getDateWithLastDayOfCurrentMonth();
+    static int getNumberOfDaysInCurrentMonth();
 };
 
 #endif

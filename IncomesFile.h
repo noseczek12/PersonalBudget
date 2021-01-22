@@ -4,27 +4,29 @@
 #include <iostream>
 #include <vector>
 #include "Income.h"
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "UserManager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class IncomesFile {
+class IncomesFile : public XmlFile {
     const string FILENAME_WITH_INCOMES;
     string temporaryIncomesFileName;
-    int lastUserId;
-    //AuxiliaryMethods auxiliaryMethods;
+    int lastIncomeId;
+    AuxiliaryMethods auxiliaryMethods;
     void deleteFile();
     void changeFilename();
 public:
-    IncomesFile(){};
-    vector<Income> loadIncomesOfLoggedinUserFromFile();
+    IncomesFile(string fileName):
+        XmlFile(fileName) {
+        lastIncomeId = 0;
+    };
+    vector<Income> loadIncomesOfLoggedInUserFromFile(int id);
     Income getIncomeData();
-    void setLastUserId();
-    int getLastUserId();
-    bool addIncomeToFile();
-    int getLastUserIdFromFile();
+    void setLastIncomeId();
+    int getLastIncomeId();
+    void addIncomeToFile(Income income);
+    int getLastIncomeIdFromFile();
 };
 
 

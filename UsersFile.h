@@ -15,12 +15,11 @@
 
 using namespace std;
 
-class UsersFile : public XmlFile
-{
+class UsersFile : public XmlFile {
     const string FILENAME_WITH_USERS;
     User getUserData();
 public:
-    UsersFile(string filename) : XmlFile(filename){};
+    UsersFile(string filename) : XmlFile(filename) {};
     void addUserToFile(User user);
     vector <User> loadUsersFromFile();
     void saveAllUsersToFile(vector <User> users);

@@ -1,7 +1,6 @@
 #include "XmlFile.h"
 
-string XmlFile::getFileName()
-{
+string XmlFile::getFileName() {
     return FILENAME;
 }
 

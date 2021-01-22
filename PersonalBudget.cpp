@@ -1,52 +1,50 @@
 #include "PersonalBudget.h"
 
-void PersonalBudget::userRegistration()
-{
+void PersonalBudget::userRegistration() {
     userManager.userRegistration();
 }
 
-void PersonalBudget::userLogging()
-{
+void PersonalBudget::userLogging() {
     userManager.userLogging();
+    if(userManager.isUserLoggedIn()) {
+        budgetManager = new BudgetManager(FILENAME_WITH_INCOMES, userManager.getIdOfLoggedInUser());
+    }
 }
 
-void PersonalBudget::userLogout()
-{
+void PersonalBudget::userLogout() {
     userManager.userLogout();
 }
 
-bool PersonalBudget::isuserLoggedIn()
-{
+int PersonalBudget::isuserLoggedIn() {
     userManager.isUserLoggedIn();
 }
 
-void PersonalBudget::addIncome()
-{
+void PersonalBudget::addIncome() {
+    if(userManager.isUserLoggedIn()) {
+        budgetManager->addIncome();
+    } else {
+        cout << "If you want to add income, you must be logged in !" << endl;
+        system("pause");
+    }
+}
+
+void PersonalBudget::addExpense() {
 
 }
 
-void PersonalBudget::addExpense()
-{
+void PersonalBudget::currentMonthBalance() {
 
 }
 
-void PersonalBudget::currentMonthBalance()
-{
+void PersonalBudget::chosenPeriodBalance() {
 
 }
 
-void PersonalBudget::chosenPeriodBalance()
-{
-
-}
-
-void PersonalBudget::changePasswordOfLoggedInUser()
-{
+void PersonalBudget::changePasswordOfLoggedInUser() {
     userManager.changePasswordOfLoggedInUser();
 }
 
-char PersonalBudget::chooseOptionFromMainMenu()
-{
+char PersonalBudget::chooseOptionFromMainMenu() {
     char choice;
 
     system("cls");
@@ -62,8 +60,7 @@ char PersonalBudget::chooseOptionFromMainMenu()
     return choice;
 }
 
-char PersonalBudget::chooseOptionFromUserMenu()
-{
+char PersonalBudget::chooseOptionFromUserMenu() {
     char choice;
 
     system("cls");
@@ -81,4 +78,10 @@ char PersonalBudget::chooseOptionFromUserMenu()
     choice = auxiliaryMethods.loadCharacter();
 
     return choice;
+}
+
+vector<Income> PersonalBudget::loadIncomesOfLoggedInUserFromFile() {
+    if(userManager.isUserLoggedIn()) {
+        budgetManager->loadIncomesOfLoggedInUserFromFile(userManager.isUserLoggedIn());
+    }
 }

@@ -11,27 +11,23 @@ using namespace std;
 class PersonalBudget {
     AuxiliaryMethods auxiliaryMethods;
     UserManager userManager;
-    BudgetManager budgetManager;
+    BudgetManager *budgetManager;
     const string FILENAME_WITH_INCOMES;
     const string FILENAME_WITH_EXPENSES;
 public:
-    /*KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
-    : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
-    {
-        adresatMenedzer = NULL;
-        vector<Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    PersonalBudget(string filenameWithUsers, string filenameWithIncomes)
+        : userManager(filenameWithUsers), FILENAME_WITH_INCOMES(filenameWithIncomes) {
+        budgetManager = NULL;
+        vector<Income> loadIncomesOfLoggedInUserFromFile();
     };
-    ~KsiazkaAdresowa()
-    {
-        delete adresatMenedzer;
-        adresatMenedzer = NULL;
+    ~PersonalBudget() {
+        delete budgetManager;
+        budgetManager = NULL;
     }
-    */
-    PersonalBudget(string filenameWithUsers) : userManager(filenameWithUsers){};
     void userRegistration();
     void userLogging();
     void userLogout();
-    bool isuserLoggedIn();
+    int isuserLoggedIn();
     void addIncome();
     void addExpense();
     void currentMonthBalance();
@@ -39,6 +35,7 @@ public:
     void changePasswordOfLoggedInUser();
     char chooseOptionFromMainMenu();
     char chooseOptionFromUserMenu();
+    vector<Income> loadIncomesOfLoggedInUserFromFile();
 };
 
 
