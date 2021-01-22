@@ -5,7 +5,7 @@ Income BudgetManager::enterNewIncomeData() {
     AuxiliaryMethods auxiliaryMethods;
     char choice;
 
-    income.setIncomeId(incomesFile.getLastIncomeIdFromFile()+1);
+    income.setIncomeId(incomesFile.getLastIncomeIdFromFile());
     income.setUserId(ID_OF_LOGGED_IN_USER);
 
     choice = chooseOptionFromAdditionalMenu();
@@ -41,7 +41,7 @@ Income BudgetManager::enterNewIncomeData() {
     income.setItem(item);
 
     string amount;
-    cout << "Enter amount of income: ";
+    cout << "Enter amount of income in xxxx,xx format: ";
     amount = auxiliaryMethods.loadLine();
     amount = auxiliaryMethods.changeCommaToDot(amount);
     income.setAmount(amount);

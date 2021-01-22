@@ -1,17 +1,14 @@
 #include "IncomesFile.h"
 
-void IncomesFile::deleteFile()
-{
+void IncomesFile::deleteFile() {
 
 }
 
-void IncomesFile::changeFilename()
-{
+void IncomesFile::changeFilename() {
 
 }
 
-vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int id)
-{
+vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int id) {
     Income income;
     vector<Income> incomes;
     CMarkup xml;
@@ -47,23 +44,19 @@ vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int id)
     return incomes;
 }
 
-Income IncomesFile::getIncomeData()
-{
+Income IncomesFile::getIncomeData() {
 
 }
 
-void IncomesFile::setLastIncomeId()
-{
+void IncomesFile::setLastIncomeId() {
 
 }
 
-int IncomesFile::getLastIncomeId()
-{
+int IncomesFile::getLastIncomeId() {
 
 }
 
-void IncomesFile::addIncomeToFile(Income income)
-{
+void IncomesFile::addIncomeToFile(Income income) {
     CMarkup xml;
     bool fileExists = xml.Load(getFileName());
     if(!fileExists) {
@@ -82,7 +75,23 @@ void IncomesFile::addIncomeToFile(Income income)
     xml.Save(getFileName());
 }
 
-int IncomesFile::getLastIncomeIdFromFile()
-{
-
+int IncomesFile::getLastIncomeIdFromFile() {
+    int idCount = 0;
+    CMarkup xml;
+    bool fileExists = xml.Load(getFileName());
+    if(!fileExists) {
+        return 1;
+    } else {
+        string singleUserData = "";
+        xml.FindElem();
+        xml.IntoElem();
+        while(xml.FindElem("Income")) {
+            xml.IntoElem();
+            xml.FindElem("IncomeId");
+            singleUserData = xml.GetData();
+            idCount = auxiliaryMethods.convertStringtoInt(singleUserData);
+            xml.OutOfElem();
+        }
+    }
+    return idCount+1;
 }
