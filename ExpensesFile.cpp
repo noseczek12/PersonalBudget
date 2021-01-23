@@ -8,8 +8,8 @@ void ExpensesFile::changeFilename() {
 
 }
 
-vector<Expense> ExpensesFile::loadExpensesOfLoggedinUserFromFile() {
-
+vector<Expense> ExpensesFile::loadExpensesOfLoggedinUserFromFile(int id) {
+;
 }
 
 Expense ExpensesFile::getExpenseData() {

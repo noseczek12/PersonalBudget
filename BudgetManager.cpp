@@ -92,3 +92,7 @@ void BudgetManager::chosenPeriodBalance() {
 vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile(int id) {
     incomesFile.loadIncomesOfLoggedInUserFromFile(id);
 }
+
+vector<Expense> BudgetManager::loadExpensesOfLoggedInUserFromFile(int id){
+    expensesFile.loadExpensesOfLoggedinUserFromFile(id);
+}

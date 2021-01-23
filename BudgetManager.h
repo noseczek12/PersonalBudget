@@ -11,6 +11,7 @@
 #include "BudgetManager.h"
 #include "AuxiliaryMethods.h"
 #include "IncomesFile.h"
+#include "ExpensesFile.h"
 
 using namespace std;
 
@@ -19,20 +20,23 @@ class BudgetManager {
     vector <Income> incomes;
     vector <Expense> expenses;
     IncomesFile incomesFile;
+    ExpensesFile expensesFile;
     AuxiliaryMethods auxiliaryMethods;
     Income enterNewIncomeData();
     Expense enterNewExpenseData();
     char chooseOptionFromAdditionalMenu();
 public:
-    BudgetManager(string filenameWithIncomes, int idOfLoggedInUser)
-        :incomesFile(filenameWithIncomes), ID_OF_LOGGED_IN_USER(idOfLoggedInUser) {
+    BudgetManager(string filenameWithIncomes, string filenameWithExpenses, int idOfLoggedInUser)
+        :incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_OF_LOGGED_IN_USER(idOfLoggedInUser) {
         incomes = incomesFile.loadIncomesOfLoggedInUserFromFile(ID_OF_LOGGED_IN_USER);
+        expenses = expensesFile.loadExpensesOfLoggedinUserFromFile(ID_OF_LOGGED_IN_USER);
     };
     void addIncome();
     void addExpense();
     void currentMonthBalance();
     void chosenPeriodBalance();
     vector<Income> loadIncomesOfLoggedInUserFromFile(int id);
+    vector<Expense> loadExpensesOfLoggedInUserFromFile(int id);
 };
 
 

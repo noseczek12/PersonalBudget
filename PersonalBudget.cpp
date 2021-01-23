@@ -7,7 +7,7 @@ void PersonalBudget::userRegistration() {
 void PersonalBudget::userLogging() {
     userManager.userLogging();
     if(userManager.isUserLoggedIn()) {
-        budgetManager = new BudgetManager(FILENAME_WITH_INCOMES, userManager.getIdOfLoggedInUser());
+        budgetManager = new BudgetManager(FILENAME_WITH_INCOMES, FILENAME_WITH_EXPENSES, userManager.getIdOfLoggedInUser());
     }
 }
 
@@ -83,5 +83,11 @@ char PersonalBudget::chooseOptionFromUserMenu() {
 vector<Income> PersonalBudget::loadIncomesOfLoggedInUserFromFile() {
     if(userManager.isUserLoggedIn()) {
         budgetManager->loadIncomesOfLoggedInUserFromFile(userManager.isUserLoggedIn());
+    }
+}
+
+vector<Expense> PersonalBudget::loadExpensesOfLoggedInUserFromFile() {
+    if(userManager.isUserLoggedIn()) {
+        budgetManager->loadExpensesOfLoggedInUserFromFile(userManager.isUserLoggedIn());
     }
 }

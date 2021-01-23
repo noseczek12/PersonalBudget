@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    PersonalBudget personalBudget("Users.xml", "Incomes.xml");
+    PersonalBudget personalBudget("Users.xml", "Incomes.xml", "Expenses.xml");
     vector <Income> incomes;
     vector <Expense> expenses;
     char choice;
