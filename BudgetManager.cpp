@@ -148,14 +148,23 @@ void BudgetManager::addExpense() {
 
 void BudgetManager::currentMonthBalance() {
     system("cls");
+    int sumOfIncomes = 0;
+    string amount;
     if (!incomes.empty())
     {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++)
         {
-            printIncomeData(*itr);
+            if (itr -> getDate() >= "20210101" && itr -> getDate() <= "20210131")
+            {
+                printIncomeData(*itr);
+                amount = itr -> getAmount();
+                sumOfIncomes += auxiliaryMethods.convertStringtoInt(amount);
+            }
         }
+        cout << endl << endl;
+        cout << "SUM OF INCOMES :" << sumOfIncomes << endl;
         cout << endl;
     }
     else
