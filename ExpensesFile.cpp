@@ -61,5 +61,22 @@ bool ExpensesFile::addExpenseToFile(Expense expense) {
 }
 
 int ExpensesFile::getLastExpenseIdFromFile() {
-
+    int idCount = 0;
+    CMarkup xml;
+    bool fileExists = xml.Load(getFileName());
+    if(!fileExists) {
+        return 1;
+    } else {
+        string singleUserData = "";
+        xml.FindElem();
+        xml.IntoElem();
+        while(xml.FindElem("Expense")) {
+            xml.IntoElem();
+            xml.FindElem("ExpenseId");
+            singleUserData = xml.GetData();
+            idCount = auxiliaryMethods.convertStringtoInt(singleUserData);
+            xml.OutOfElem();
+        }
+    }
+    return idCount+1;
 }
