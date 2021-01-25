@@ -57,7 +57,22 @@ int ExpensesFile::getLastUserId() {
 }
 
 bool ExpensesFile::addExpenseToFile(Expense expense) {
-;
+    CMarkup xml;
+    bool fileExists = xml.Load(getFileName());
+    if(!fileExists) {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem( "Expenses" );
+    }
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem( "Expense" );
+    xml.IntoElem();
+    xml.AddElem( "ExpenseId", AuxiliaryMethods::convertIntToString(expense.getExpenseId()));
+    xml.AddElem( "UserId", AuxiliaryMethods::convertIntToString(expense.getUserId()));
+    xml.AddElem( "Date", expense.getDate());
+    xml.AddElem( "Item", expense.getItem() );
+    xml.AddElem( "Amount", expense.getAmount() );
+    xml.Save(getFileName());
 }
 
 int ExpensesFile::getLastExpenseIdFromFile() {
