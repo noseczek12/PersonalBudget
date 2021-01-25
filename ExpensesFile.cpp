@@ -56,8 +56,8 @@ int ExpensesFile::getLastUserId() {
 
 }
 
-bool ExpensesFile::addExpenseToFile() {
-
+bool ExpensesFile::addExpenseToFile(Expense expense) {
+;
 }
 
 int ExpensesFile::getLastUserIdFromFile() {

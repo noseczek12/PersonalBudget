@@ -50,7 +50,7 @@ Income BudgetManager::enterNewIncomeData() {
 }
 
 Expense BudgetManager::enterNewExpenseData() {
-
+    ;
 }
 
 char BudgetManager::chooseOptionFromAdditionalMenu() {
@@ -78,7 +78,13 @@ void BudgetManager::addIncome() {
 }
 
 void BudgetManager::addExpense() {
+    Expense expense;
+    expense = enterNewExpenseData();
 
+    expenses.push_back(expense);
+    expensesFile.addExpenseToFile(expense);
+    cout << "New expense has been added." << endl;
+    system("pause");
 }
 
 void BudgetManager::currentMonthBalance() {
