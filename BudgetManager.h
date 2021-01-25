@@ -24,7 +24,8 @@ class BudgetManager {
     AuxiliaryMethods auxiliaryMethods;
     Income enterNewIncomeData();
     Expense enterNewExpenseData();
-    char chooseOptionFromAdditionalMenu();
+    char chooseOptionFromAdditionalIncomesMenu();
+    char chooseOptionFromAdditionalExpensesMenu();
 public:
     BudgetManager(string filenameWithIncomes, string filenameWithExpenses, int idOfLoggedInUser)
         :incomesFile(filenameWithIncomes), expensesFile(filenameWithExpenses), ID_OF_LOGGED_IN_USER(idOfLoggedInUser) {

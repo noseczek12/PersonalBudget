@@ -26,7 +26,7 @@ public:
     void setLastUserId();
     int getLastUserId();
     bool addExpenseToFile(Expense expense);
-    int getLastUserIdFromFile();
+    int getLastExpenseIdFromFile();
 };
 
 
