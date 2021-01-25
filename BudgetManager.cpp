@@ -162,6 +162,20 @@ void BudgetManager::currentMonthBalance() {
     {
         cout << endl << "There are no incomes." << endl << endl;
     }
+    if (!expenses.empty())
+    {
+        cout << "             >>> EXPENSES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++)
+        {
+            printExpenseData(*itr);
+        }
+        cout << endl;
+    }
+    else
+    {
+        cout << endl << "There are no incomes." << endl << endl;
+    }
     system("pause");
 }
 
@@ -176,6 +190,15 @@ void BudgetManager::printIncomeData(Income income)
     cout << "Date :           " << income.getDate() << endl;
     cout << "Item of income:     " << income.getItem() << endl;
     cout << "Amount:              " << income.getAmount() << endl;
+}
+
+void BudgetManager::printExpenseData(Expense expense)
+{
+    cout << endl << "Expense Id:                 " << expense.getExpenseId() << endl;
+    cout << "User Id:               " << expense.getUserId() << endl;
+    cout << "Date :           " << expense.getDate() << endl;
+    cout << "Item of expense:     " << expense.getItem() << endl;
+    cout << "Amount:              " << expense.getAmount() << endl;
 }
 
 vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile(int id) {

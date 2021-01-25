@@ -37,6 +37,7 @@ public:
     void currentMonthBalance();
     void chosenPeriodBalance();
     void printIncomeData(Income income);
+    void printExpenseData(Expense expense);
     vector<Income> loadIncomesOfLoggedInUserFromFile(int id);
     vector<Expense> loadExpensesOfLoggedInUserFromFile(int id);
 };
