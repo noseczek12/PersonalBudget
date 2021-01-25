@@ -4,27 +4,29 @@
 #include <iostream>
 #include <vector>
 #include "Expense.h"
-//#include "UzytkownikMenedzer.h"
-//#include "AdresatMenedzer.h"
-//#include "MetodyPomocnicze.h"
+#include "UserManager.h"
+#include "AuxiliaryMethods.h"
 
 using namespace std;
 
-class ExpensesFile {
+class ExpensesFile : public XmlFile {
     const string FILENAME_WITH_EXPENSES;
     string temporaryExpensesFileName;
-    int lastUserId;
-    //AuxiliaryMethods auxiliaryMethods;
+    int lastExpenseId;
+    AuxiliaryMethods auxiliaryMethods;
     void deleteFile();
     void changeFilename();
 public:
-    ExpensesFile() {};
-    vector<Expense> loadExpensesOfLoggedinUserFromFile();
+    ExpensesFile(string fileName):
+        XmlFile(fileName) {
+        lastExpenseId = 0;
+    };
+    vector<Expense> loadExpensesOfLoggedinUserFromFile(int id);
     Expense getExpenseData();
     void setLastUserId();
     int getLastUserId();
-    bool addExpenseToFile();
-    int getLastUserIdFromFile();
+    bool addExpenseToFile(Expense expense);
+    int getLastExpenseIdFromFile();
 };
 
 
