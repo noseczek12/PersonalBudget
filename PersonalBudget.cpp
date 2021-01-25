@@ -29,7 +29,12 @@ void PersonalBudget::addIncome() {
 }
 
 void PersonalBudget::addExpense() {
-
+    if(userManager.isUserLoggedIn()) {
+        budgetManager->addExpense();
+    } else {
+        cout << "If you want to add expense, you must be logged in !" << endl;
+        system("pause");
+    }
 }
 
 void PersonalBudget::currentMonthBalance() {
