@@ -22,7 +22,7 @@ Income BudgetManager::enterNewIncomeData() {
         cout << "Please input date in yyyy-mm-dd format: ";
         inputDate = auxiliaryMethods.loadLine();
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
-        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == true)
+        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
             income.setDate(removedDelimitersDate);
         else
             cout << "Entered date is not valid. Please try again." << endl;
@@ -71,10 +71,13 @@ Expense BudgetManager::enterNewExpenseData() {
         cout << "Please input date in yyyy-mm-dd format: ";
         inputDate = auxiliaryMethods.loadLine();
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
-        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == true)
+        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
             expense.setDate(removedDelimitersDate);
         else
-            cout << "Entered date is not valid. Please try again." << endl;
+        {
+           cout << "Entered date is not valid. Please try again." << endl;
+           break;
+        }
         break;
     }
     default: {

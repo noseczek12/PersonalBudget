@@ -94,16 +94,14 @@ string AuxiliaryMethods::getCurrentDate() {
     return s;
 }
 
-bool AuxiliaryMethods::checkDateValidity(string enteredDate) {
-    int enteredDateConvertedToInt;
-    int lastDayOfCurrentMonth;
-    int dateLimit = 20010101;
-    enteredDateConvertedToInt = convertStringtoInt(enteredDate);
+int AuxiliaryMethods::checkDateValidity(string enteredDate) {
+    string lastDayOfCurrentMonth;
+    string dateLimit = "20010101";
     lastDayOfCurrentMonth = getDateWithLastDayOfCurrentMonth();
-    if(enteredDateConvertedToInt >= dateLimit && enteredDateConvertedToInt <= lastDayOfCurrentMonth)
-        return true;
+    if(enteredDate >= dateLimit && enteredDate <= lastDayOfCurrentMonth)
+        return 1;
     else
-        return false;
+        return 0;
 }
 
 string AuxiliaryMethods::removeDelimiters(string str) {
@@ -111,17 +109,16 @@ string AuxiliaryMethods::removeDelimiters(string str) {
     return str;
 }
 
-int AuxiliaryMethods::getDateWithLastDayOfCurrentMonth() {
+string AuxiliaryMethods::getDateWithLastDayOfCurrentMonth() {
+    char s[10];
+    string date = s;
     time_t t = time(0);
     tm* now = localtime(&t);
     int LastDayOfMonth = getNumberOfDaysInCurrentMonth();
     int currentMonth = now->tm_mon + 1;
     int currentYear = now->tm_year + 1900;
-    char s[10];
     sprintf(s, "%04d%02d%02d", currentYear, currentMonth, LastDayOfMonth);
-    string date = s;
-    int convertedDateToInt = stoi(s);
-    return convertedDateToInt;
+    return s;
 }
 
 int AuxiliaryMethods::getNumberOfDaysInCurrentMonth() {
