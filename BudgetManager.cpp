@@ -24,10 +24,10 @@ Income BudgetManager::enterNewIncomeData() {
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
         if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
             income.setDate(removedDelimitersDate);
-        else
+        else if (auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 0)
             cout << "Entered date is not valid. Please try again." << endl;
-        break;
     }
+    break;
     default: {
         cout << endl << "There is no such option in the menu." << endl << endl;
         system("pause");
@@ -73,12 +73,10 @@ Expense BudgetManager::enterNewExpenseData() {
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
         if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
             expense.setDate(removedDelimitersDate);
-        else
-        {
-           cout << "Entered date is not valid. Please try again." << endl;
-           break;
+        else {
+            cout << "Entered date is not valid. Please try again." << endl;
+            break;
         }
-        break;
     }
     default: {
         cout << endl << "There is no such option in the menu." << endl << endl;

@@ -95,13 +95,31 @@ string AuxiliaryMethods::getCurrentDate() {
 }
 
 int AuxiliaryMethods::checkDateValidity(string enteredDate) {
-    string lastDayOfCurrentMonth;
-    string dateLimit = "20010101";
-    lastDayOfCurrentMonth = getDateWithLastDayOfCurrentMonth();
-    if(enteredDate >= dateLimit && enteredDate <= lastDayOfCurrentMonth)
-        return 1;
-    else
+    int i = 0, year = 0, month = 0, day = 0, intDate = 0;
+    int lastDayOfCurrentMonth;
+    lastDayOfCurrentMonth = getLastDayOfCurrentMonth();
+    time_t t = time(0);
+    tm* now = localtime(&t);
+    for(; (int(enteredDate[i]) >= 48) && (int(enteredDate[i]) <= 57); i++) {
+        if(i<4)
+            year=year*10+int(enteredDate[i])-48;
+        if(i>4 && i<6)
+            month=month*10+int(enteredDate[i])-48;
+        if(i>6 && i<8)
+            day=day*10+int(enteredDate[i])-48;
+    }
+    i++;
+    if ((year < 2000) || (year > (now->tm_year + 1900))) {
         return 0;
+    }
+    if ( ((month < 1) || (month > 12)) || (year == (now->tm_year +
+                                           1900) && month > (now->tm_mon + 1)) ) {
+        return 0;
+    }
+    if ((day == 0) || (day > lastDayOfCurrentMonth)) {
+        return 0;
+    }
+    return 1;
 }
 
 string AuxiliaryMethods::removeDelimiters(string str) {
@@ -109,16 +127,16 @@ string AuxiliaryMethods::removeDelimiters(string str) {
     return str;
 }
 
-string AuxiliaryMethods::getDateWithLastDayOfCurrentMonth() {
+int AuxiliaryMethods::getLastDayOfCurrentMonth() {
     char s[10];
     string date = s;
     time_t t = time(0);
     tm* now = localtime(&t);
-    int LastDayOfMonth = getNumberOfDaysInCurrentMonth();
-    int currentMonth = now->tm_mon + 1;
-    int currentYear = now->tm_year + 1900;
-    sprintf(s, "%04d%02d%02d", currentYear, currentMonth, LastDayOfMonth);
-    return s;
+    int lastDayOfMonth = getNumberOfDaysInCurrentMonth();
+    //int currentMonth = now->tm_mon + 1;
+    //int currentYear = now->tm_year + 1900;
+    //sprintf(s, "%04d%02d%02d", currentYear, currentMonth, LastDayOfMonth);
+    return lastDayOfMonth;
 }
 
 int AuxiliaryMethods::getNumberOfDaysInCurrentMonth() {
