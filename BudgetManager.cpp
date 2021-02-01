@@ -24,8 +24,9 @@ Income BudgetManager::enterNewIncomeData() {
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
         if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
             income.setDate(removedDelimitersDate);
-        else if (auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 0)
+        else
             cout << "Entered date is not valid. Please try again." << endl;
+            system("pause");
     }
     break;
     default: {

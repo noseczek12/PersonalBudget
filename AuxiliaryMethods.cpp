@@ -96,8 +96,7 @@ string AuxiliaryMethods::getCurrentDate() {
 
 int AuxiliaryMethods::checkDateValidity(string enteredDate) {
     int i = 0, year = 0, month = 0, day = 0, intDate = 0;
-    int lastDayOfCurrentMonth;
-    lastDayOfCurrentMonth = getLastDayOfCurrentMonth();
+    int lastDayOfEnteredMonth;
     time_t t = time(0);
     tm* now = localtime(&t);
     for(; (int(enteredDate[i]) >= 48) && (int(enteredDate[i]) <= 57); i++) {
@@ -109,14 +108,14 @@ int AuxiliaryMethods::checkDateValidity(string enteredDate) {
             day=day*10+int(enteredDate[i])-48;
     }
     i++;
+    lastDayOfEnteredMonth = getNumberOfDaysInEnteredMonth(month,year);
     if ((year < 2000) || (year > (now->tm_year + 1900))) {
         return 0;
     }
-    if ( ((month < 1) || (month > 12)) || (year == (now->tm_year +
-                                           1900) && month > (now->tm_mon + 1)) ) {
+    if ( ((month < 1) || (month > 12)) || (year == (now->tm_year + 1900) && month > (now->tm_mon + 1)) ) {
         return 0;
     }
-    if ((day == 0) || (day > lastDayOfCurrentMonth)) {
+    if ((day == 0) || (day > lastDayOfEnteredMonth)) {
         return 0;
     }
     return 1;
@@ -127,23 +126,7 @@ string AuxiliaryMethods::removeDelimiters(string str) {
     return str;
 }
 
-int AuxiliaryMethods::getLastDayOfCurrentMonth() {
-    char s[10];
-    string date = s;
-    time_t t = time(0);
-    tm* now = localtime(&t);
-    int lastDayOfMonth = getNumberOfDaysInCurrentMonth();
-    //int currentMonth = now->tm_mon + 1;
-    //int currentYear = now->tm_year + 1900;
-    //sprintf(s, "%04d%02d%02d", currentYear, currentMonth, LastDayOfMonth);
-    return lastDayOfMonth;
-}
-
-int AuxiliaryMethods::getNumberOfDaysInCurrentMonth() {
-    time_t t = time(0);
-    tm* now = localtime(&t);
-    int month = now->tm_mon + 1;
-    int year = now->tm_year + 1900;
+int AuxiliaryMethods::getNumberOfDaysInEnteredMonth(int month, int year) {
     if( month == 2) {
         if((year%400==0) || (year%4==0 && year%100!=0))
             return 29;

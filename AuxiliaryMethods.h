@@ -24,8 +24,7 @@ public:
     static string getCurrentDate();
     static int checkDateValidity(string enteredDate);
     static string removeDelimiters(string str);
-    static int getLastDayOfCurrentMonth();
-    static int getNumberOfDaysInCurrentMonth();
+    static int getNumberOfDaysInEnteredMonth(int month, int year);
 };
 
 #endif
