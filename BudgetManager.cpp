@@ -22,13 +22,16 @@ Income BudgetManager::enterNewIncomeData() {
         cout << "Please input date in yyyy-mm-dd format: ";
         inputDate = auxiliaryMethods.loadLine();
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
-        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
-            income.setDate(removedDelimitersDate);
-        else
+        while(auxiliaryMethods.checkDateValidity(removedDelimitersDate)==0)
+        {
             cout << "Entered date is not valid. Please try again." << endl;
-            system("pause");
+            cout << "Please input date in yyyy-mm-dd format: ";
+            inputDate = auxiliaryMethods.loadLine();
+            removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
+        }
+        income.setDate(removedDelimitersDate);
+        break;
     }
-    break;
     default: {
         cout << endl << "There is no such option in the menu." << endl << endl;
         system("pause");
@@ -72,12 +75,15 @@ Expense BudgetManager::enterNewExpenseData() {
         cout << "Please input date in yyyy-mm-dd format: ";
         inputDate = auxiliaryMethods.loadLine();
         removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
-        if(auxiliaryMethods.checkDateValidity(removedDelimitersDate) == 1)
-            expense.setDate(removedDelimitersDate);
-        else {
+        while(auxiliaryMethods.checkDateValidity(removedDelimitersDate)==0)
+        {
             cout << "Entered date is not valid. Please try again." << endl;
-            break;
+            cout << "Please input date in yyyy-mm-dd format: ";
+            inputDate = auxiliaryMethods.loadLine();
+            removedDelimitersDate = auxiliaryMethods.removeDelimiters(inputDate);
         }
+        expense.setDate(removedDelimitersDate);
+        break;
     }
     default: {
         cout << endl << "There is no such option in the menu." << endl << endl;
