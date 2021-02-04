@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <windows.h>
+#include <string>
 
 #include "Income.h"
 #include "Expense.h"
@@ -36,6 +37,8 @@ public:
     void addExpense();
     void currentMonthBalance();
     void chosenPeriodBalance();
+    void printIncomeData(Income income);
+    void printExpenseData(Expense expense);
     vector<Income> loadIncomesOfLoggedInUserFromFile(int id);
     vector<Expense> loadExpensesOfLoggedInUserFromFile(int id);
 };

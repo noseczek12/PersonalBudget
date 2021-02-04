@@ -14,7 +14,7 @@ vector<Income> IncomesFile::loadIncomesOfLoggedInUserFromFile(int id) {
     CMarkup xml;
     bool fileExists = xml.Load(getFileName());
     if(!fileExists) {
-        cout << "Can't open file. File doesn't exist." << endl;
+        cout << "Can't open file. File " << getFileName() << " doesn't exist." << endl;
         system("pause");
     } else {
         string singleUserData = "";
