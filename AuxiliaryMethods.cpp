@@ -139,3 +139,29 @@ int AuxiliaryMethods::getNumberOfDaysInEnteredMonth(int month, int year) {
     else
         return 30;
 }
+
+string AuxiliaryMethods::getDateWithFirstDayOfCurrentMonth()
+{
+    char s[10];
+    string date = s;
+    time_t t = time(0);
+    tm* now = localtime(&t);
+    int day = 1;
+    int month = now->tm_mon + 1;
+    int year = now->tm_year + 1900;
+    sprintf(s, "%04d%02d%02d", year, month, day);
+    return s;
+}
+
+string AuxiliaryMethods::getDateWithLastDayOfCurrentMonth()
+{
+    char s[10];
+    string date = s;
+    time_t t = time(0);
+    tm* now = localtime(&t);
+    int month = now->tm_mon + 1;
+    int year = now->tm_year + 1900;
+    int day = getNumberOfDaysInEnteredMonth(month,year);
+    sprintf(s, "%04d%02d%02d", year, month, day);
+    return s;
+}

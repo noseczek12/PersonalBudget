@@ -162,7 +162,7 @@ void BudgetManager::currentMonthBalance() {
         cout << "             >>> INCOMES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
-            if (itr -> getDate() >= "20210101" && itr -> getDate() <= "20210131") {
+            if (itr -> getDate() >= auxiliaryMethods.getDateWithFirstDayOfCurrentMonth() && itr -> getDate() <= auxiliaryMethods.getDateWithLastDayOfCurrentMonth()) {
                 printIncomeData(*itr);
                 incomeAmount = itr -> getAmount();
                 sumOfIncomes += stof(incomeAmount);
@@ -176,7 +176,7 @@ void BudgetManager::currentMonthBalance() {
         cout << "             >>> EXPENSES <<<" << endl;
         cout << "-----------------------------------------------" << endl;
         for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
-            if (itr -> getDate() >= "20210101" && itr -> getDate() <= "20210131") {
+            if (itr -> getDate() >= auxiliaryMethods.getDateWithFirstDayOfCurrentMonth() && itr -> getDate() <= auxiliaryMethods.getDateWithLastDayOfCurrentMonth()) {
                 printExpenseData(*itr);
                 expenseAmount = itr -> getAmount();
                 sumOfExpenses += stof(expenseAmount);
