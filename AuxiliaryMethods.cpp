@@ -102,7 +102,7 @@ int AuxiliaryMethods::checkDateValidity(string enteredDate) {
     for(; (int(enteredDate[i]) >= 48) && (int(enteredDate[i]) <= 57); i++) {
         if(i<4)
             year=year*10+int(enteredDate[i])-48;
-        if(i>4 && i<6)
+        if(i>=4 && i<6)
             month=month*10+int(enteredDate[i])-48;
         if(i>=6 && i<8)
             day=day*10+int(enteredDate[i])-48;
