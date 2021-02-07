@@ -205,6 +205,39 @@ void BudgetManager::chosenPeriodBalance() {
     initialDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(initialDate);
     endingDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(endingDate);
     system("cls");
+    if (!incomes.empty()) {
+        cout << "             >>> INCOMES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+            if (itr -> getDate() >= initialDateWithoutDelimiters && itr -> getDate() <= endingDateWithoutDelimiters) {
+                printIncomeData(*itr);
+                incomeAmount = itr -> getAmount();
+                sumOfIncomes += stof(incomeAmount);
+            }
+        }
+        cout << endl;
+    } else {
+        cout << endl << "There are no incomes." << endl << endl;
+    }
+    if (!expenses.empty()) {
+        cout << "             >>> EXPENSES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+            if (itr -> getDate() >= initialDateWithoutDelimiters && itr -> getDate() <= endingDateWithoutDelimiters) {
+                printExpenseData(*itr);
+                expenseAmount = itr -> getAmount();
+                sumOfExpenses += stof(expenseAmount);
+            }
+        }
+        cout << endl;
+    } else {
+        cout << endl << "There are no expenses." << endl << endl;
+    }
+    cout << "-----------------------------------------------" << endl;
+    cout << "SUM OF INCOMES : " << sumOfIncomes << endl;
+    cout << "SUM OF EXPENSES : " << sumOfExpenses << endl;
+    cout << "CHOSEN PERIOD BALANCE : " << sumOfIncomes - sumOfExpenses << endl << endl;
+    system("pause");
 }
 
 void BudgetManager::printIncomeData(Income income) {
