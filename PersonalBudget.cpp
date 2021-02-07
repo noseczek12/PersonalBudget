@@ -47,7 +47,12 @@ void PersonalBudget::currentMonthBalance() {
 }
 
 void PersonalBudget::chosenPeriodBalance() {
-
+    if(userManager.isUserLoggedIn()) {
+        budgetManager->chosenPeriodBalance();
+    } else {
+        cout << "If you want to show chosen period balance, you must be logged in !" << endl;
+        system("pause");
+    }
 }
 
 void PersonalBudget::changePasswordOfLoggedInUser() {

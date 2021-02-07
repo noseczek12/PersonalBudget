@@ -194,7 +194,17 @@ void BudgetManager::currentMonthBalance() {
 }
 
 void BudgetManager::chosenPeriodBalance() {
-
+    system("cls");
+    float sumOfIncomes = 0.00, sumOfExpenses = 0.00, balance = 0.00;
+    string incomeAmount, expenseAmount;
+    string initialDate, endingDate, initialDateWithoutDelimiters, endingDateWithoutDelimiters;
+    cout << "Please input initial date in yyyy-mm-dd format: ";
+    initialDate = auxiliaryMethods.loadLine();
+    cout << "Please input ending date in yyyy-mm-dd format: ";
+    endingDate = auxiliaryMethods.loadLine();
+    initialDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(initialDate);
+    endingDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(endingDate);
+    system("cls");
 }
 
 void BudgetManager::printIncomeData(Income income) {
