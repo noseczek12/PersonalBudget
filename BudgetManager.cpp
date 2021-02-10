@@ -241,15 +241,15 @@ void BudgetManager::chosenPeriodBalance() {
 }
 
 void BudgetManager::printIncomeData(Income income) {
-    cout << "Date :           " << income.getDate() << endl;
+    cout << "Date :           " << auxiliaryMethods.getDateWithDelimiters(income.getDate()) << endl;
     cout << "Item of income:     " << income.getItem() << endl;
-    cout << "Amount:              " << income.getAmount() << endl;
+    cout << "Amount:              " << income.getAmount() << endl << endl;
 }
 
 void BudgetManager::printExpenseData(Expense expense) {
-    cout << "Date :           " << expense.getDate() << endl;
+    cout << "Date :           " << auxiliaryMethods.getDateWithDelimiters(expense.getDate()) << endl;
     cout << "Item of expense:     " << expense.getItem() << endl;
-    cout << "Amount:              " << expense.getAmount() << endl;
+    cout << "Amount:              " << expense.getAmount() << endl << endl;
 }
 
 vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile(int id) {
