@@ -241,16 +241,12 @@ void BudgetManager::chosenPeriodBalance() {
 }
 
 void BudgetManager::printIncomeData(Income income) {
-    cout << endl << "Income Id:                 " << income.getIncomeId() << endl;
-    cout << "User Id:               " << income.getUserId() << endl;
     cout << "Date :           " << income.getDate() << endl;
     cout << "Item of income:     " << income.getItem() << endl;
     cout << "Amount:              " << income.getAmount() << endl;
 }
 
 void BudgetManager::printExpenseData(Expense expense) {
-    cout << endl << "Expense Id:                 " << expense.getExpenseId() << endl;
-    cout << "User Id:               " << expense.getUserId() << endl;
     cout << "Date :           " << expense.getDate() << endl;
     cout << "Item of expense:     " << expense.getItem() << endl;
     cout << "Amount:              " << expense.getAmount() << endl;
