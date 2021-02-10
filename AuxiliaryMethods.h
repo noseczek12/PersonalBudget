@@ -27,6 +27,7 @@ public:
     static int getNumberOfDaysInEnteredMonth(int month, int year);
     static string getDateWithFirstDayOfCurrentMonth();
     static string getDateWithLastDayOfCurrentMonth();
+    static string getDateWithDelimiters(string str);
 };
 
 #endif

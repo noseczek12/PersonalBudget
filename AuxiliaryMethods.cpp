@@ -165,3 +165,10 @@ string AuxiliaryMethods::getDateWithLastDayOfCurrentMonth()
     sprintf(s, "%04d%02d%02d", year, month, day);
     return s;
 }
+
+string AuxiliaryMethods::getDateWithDelimiters(string str)
+{
+    str.insert(4, "-");
+	str.insert(7, "-");
+	return str;
+}

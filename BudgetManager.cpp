@@ -194,23 +194,62 @@ void BudgetManager::currentMonthBalance() {
 }
 
 void BudgetManager::chosenPeriodBalance() {
-
+    system("cls");
+    float sumOfIncomes = 0.00, sumOfExpenses = 0.00, balance = 0.00;
+    string incomeAmount, expenseAmount;
+    string initialDate, endingDate, initialDateWithoutDelimiters, endingDateWithoutDelimiters;
+    cout << "Please input initial date in yyyy-mm-dd format: ";
+    initialDate = auxiliaryMethods.loadLine();
+    cout << "Please input ending date in yyyy-mm-dd format: ";
+    endingDate = auxiliaryMethods.loadLine();
+    initialDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(initialDate);
+    endingDateWithoutDelimiters = auxiliaryMethods.removeDelimiters(endingDate);
+    system("cls");
+    if (!incomes.empty()) {
+        cout << "             >>> INCOMES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Income> :: iterator itr = incomes.begin(); itr != incomes.end(); itr++) {
+            if (itr -> getDate() >= initialDateWithoutDelimiters && itr -> getDate() <= endingDateWithoutDelimiters) {
+                printIncomeData(*itr);
+                incomeAmount = itr -> getAmount();
+                sumOfIncomes += stof(incomeAmount);
+            }
+        }
+        cout << endl;
+    } else {
+        cout << endl << "There are no incomes." << endl << endl;
+    }
+    if (!expenses.empty()) {
+        cout << "             >>> EXPENSES <<<" << endl;
+        cout << "-----------------------------------------------" << endl;
+        for (vector <Expense> :: iterator itr = expenses.begin(); itr != expenses.end(); itr++) {
+            if (itr -> getDate() >= initialDateWithoutDelimiters && itr -> getDate() <= endingDateWithoutDelimiters) {
+                printExpenseData(*itr);
+                expenseAmount = itr -> getAmount();
+                sumOfExpenses += stof(expenseAmount);
+            }
+        }
+        cout << endl;
+    } else {
+        cout << endl << "There are no expenses." << endl << endl;
+    }
+    cout << "-----------------------------------------------" << endl;
+    cout << "SUM OF INCOMES : " << sumOfIncomes << endl;
+    cout << "SUM OF EXPENSES : " << sumOfExpenses << endl;
+    cout << "CHOSEN PERIOD BALANCE : " << sumOfIncomes - sumOfExpenses << endl << endl;
+    system("pause");
 }
 
 void BudgetManager::printIncomeData(Income income) {
-    cout << endl << "Income Id:                 " << income.getIncomeId() << endl;
-    cout << "User Id:               " << income.getUserId() << endl;
-    cout << "Date :           " << income.getDate() << endl;
+    cout << "Date :           " << auxiliaryMethods.getDateWithDelimiters(income.getDate()) << endl;
     cout << "Item of income:     " << income.getItem() << endl;
-    cout << "Amount:              " << income.getAmount() << endl;
+    cout << "Amount:              " << income.getAmount() << endl << endl;
 }
 
 void BudgetManager::printExpenseData(Expense expense) {
-    cout << endl << "Expense Id:                 " << expense.getExpenseId() << endl;
-    cout << "User Id:               " << expense.getUserId() << endl;
-    cout << "Date :           " << expense.getDate() << endl;
+    cout << "Date :           " << auxiliaryMethods.getDateWithDelimiters(expense.getDate()) << endl;
     cout << "Item of expense:     " << expense.getItem() << endl;
-    cout << "Amount:              " << expense.getAmount() << endl;
+    cout << "Amount:              " << expense.getAmount() << endl << endl;
 }
 
 vector<Income> BudgetManager::loadIncomesOfLoggedInUserFromFile(int id) {
